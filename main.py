@@ -4,7 +4,7 @@ from telegram.ext.callbackcontext import CallbackContext
 from telegram.update import Update
 import random
 import logging
-import PySimpleGUI as sg
+#import PySimpleGUI as sg
 import time
 
 logging.basicConfig(format='%(levelname)s - %(message)s',
@@ -125,10 +125,10 @@ dic_2 = {1: "Стёб из твоих уст не будет засчитан �
 ECHO, TASK, RE_START = range(3)
 
 
-def start_bot():
+def main():
     global updater
     updater = Updater(
-        'Your tolken', use_context=True)
+        '5175010321:AAGgpqHzgjRIpDHnEOy82vaaPzICOZqp8nE', use_context=True)
 
     dispatcher = updater.dispatcher
 
@@ -151,12 +151,13 @@ def start_bot():
     )
     dispatcher.add_handler(conv_handler)
     updater.start_polling()
+    updater.idle()
 
 
 def start(update, context):
     keyboard = [[InlineKeyboardButton("Начать", callback_data='echo on'),
                  InlineKeyboardButton("Что-то не хочется", callback_data='echo off')]]
-    update.message.reply_text("Приветсую вас. Здесь вы можете послать на 123 и обругать кого захочете. Собщения исчезнут чрез 5 секунд.",
+    update.message.reply_text("Приветствую вас. Здесь вы можете послать на 123 и обругать кого захочете. Собщения исчезнут чрез 5 секунд.",
                               reply_markup=InlineKeyboardMarkup(keyboard))
     return ECHO
 
@@ -210,6 +211,11 @@ def re_start(update: Update, context: CallbackContext) -> None:
     return TASK
 
 
+if __name__ == '__main__':
+    main()
+
+
+"""
 def gui():
     layout = [[sg.Text('Bot Status: '), sg.Text('Stopped', key='status')],
               [sg.Button('Start'), sg.Button('Stop', disabled=True), sg.Exit()]]
@@ -239,3 +245,5 @@ def gui():
 
 
 gui()
+
+"""
