@@ -128,7 +128,7 @@ ECHO, TASK, RE_START = range(3)
 def main():
     global updater
     updater = Updater(
-        '5175010321:AAGgpqHzgjRIpDHnEOy82vaaPzICOZqp8nE', use_context=True)
+        'Tolken', use_context=True)
 
     dispatcher = updater.dispatcher
 
